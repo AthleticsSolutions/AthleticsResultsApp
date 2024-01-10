@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
         <Topbar> </Topbar>
-      <h1 class="text-yellow-500 text-6xl">Test</h1>
+
       <Schedule schedule={schedule} />
     </div>
   );

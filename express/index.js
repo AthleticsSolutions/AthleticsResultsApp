@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 
-const baseUrl = 'https://86cd-93-185-15-40.ngrok-free.app';
+const baseUrl = 'https://cc8c-93-185-15-40.ngrok-free.app';
 const UrlRaces = `${baseUrl}/api/races`;
 const UrlDisciplines = `${baseUrl}/api/disciplines`;
 
@@ -51,17 +51,18 @@ app.use('/time_schedule', cors(), async (req, res) => {
 
     const sortedData = data.sort((a, b) => new Date(a.start) - new Date(b.start));
 
-    const schedule = sortedData.map((data, index) => ({
-      id: data.id,
-      cameraid: data.cameraId,
-      wind: data.wind,
-      resultsOfficial: data.isOfficialResults,
-      category: data.categoryClassDescription,
-      starttime: convertToTimeOnly(data.start), 
-      gender: data.sex,
-      discipline: data.disciplineClassDescription,
-      phase: data.phaseClassDescription,
-    }));
+   const schedule = sortedData.map((data, index) => ({
+  id: data.id,
+  cameraid: data.cameraId,
+  wind: data.wind,
+  resultsOfficial: data.isOfficialResults,
+  category: data.categoryClassDescription,
+  starttime: convertToTimeOnly(data.start), 
+  gender: data.sex,
+  discipline: data.disciplineClassDescription,
+  phase: data.phaseClassDescription,
+}));
+
 
     res.json({ schedule }); 
   } catch (error) {
