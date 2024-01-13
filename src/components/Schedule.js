@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import HamburgerMenu from './HamburgerMenu';
 import ExpandedTable from './ExpandedTable';
 
@@ -7,7 +8,22 @@ const Schedule = ({ schedule }) => {
 
   const toggleMenu = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
-  }
+  };
+
+  const fetchData = async () => {
+    // Add your data fetching logic here
+  };
+
+  useEffect(() => {
+    const fetchDataAndSetInterval = async () => {
+      await fetchData(); // Initial fetch
+      const intervalId = setInterval(fetchData, 10000); // Fetch data every 10 seconds
+
+      return () => clearInterval(intervalId); // Cleanup on component unmount
+    };
+
+    fetchDataAndSetInterval();
+  }, []); // Empty dependency array to run only once on mount
 
   return (
     <div className="text-center pt-16 px-16">

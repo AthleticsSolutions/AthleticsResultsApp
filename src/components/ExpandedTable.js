@@ -4,22 +4,23 @@ import axios from "axios";
 const ExpandedTable = ({ results, eventId }) => {
   const [expandedResults, setExpandedResults] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:4000/results/${eventId}`
-        );
-        const sortedResults = response.data.results
-          ? response.data.results.sort((a, b) => a.place - b.place)
-          : [];
-        setExpandedResults(sortedResults);
-      } catch (error) {
-        console.error("Error fetching data from API", error);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/results/${eventId}`);
+      const sortedResults = response.data.results
+        ? response.data.results.sort((a, b) => a.place - b.place)
+        : [];
+      setExpandedResults(sortedResults);
+    } catch (error) {
+      console.error("Error fetching data from API", error);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
+    const intervalId = setInterval(fetchData, 10000);
+
+    return () => clearInterval(intervalId);
   }, [eventId]);
 
   return (
@@ -44,7 +45,7 @@ const ExpandedTable = ({ results, eventId }) => {
             <td>{result.lastName}</td>
             <td>{result.club}</td>
             <td>{result.result}</td>
-            <td>{result.result < result.sb ? "SB" : result.result < result.pb && result.pb != null ? "PB" : ""}</td>
+            <td>{result.result < result.sb ? "SB" : result.result < result.pb && result.pb != null ? "PB" : ""}</td>
           </tr>
         ))}
       </tbody>

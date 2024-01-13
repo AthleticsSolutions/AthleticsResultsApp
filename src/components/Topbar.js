@@ -18,6 +18,9 @@ function Topbar(props) {
     };
 
     fetchData();
+    const intervalId = setInterval(fetchData, 10000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const today = new Date();
