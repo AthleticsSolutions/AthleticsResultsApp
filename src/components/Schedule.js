@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+// Schedule.js
+import React, { useState } from "react";
 import HamburgerMenu from './HamburgerMenu';
 import ExpandedTable from './ExpandedTable';
 
@@ -8,27 +8,12 @@ const Schedule = ({ schedule }) => {
 
   const toggleMenu = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
-  };
-
-  const fetchData = async () => {
-    // Add your data fetching logic here
-  };
-
-  useEffect(() => {
-    const fetchDataAndSetInterval = async () => {
-      await fetchData(); // Initial fetch
-      const intervalId = setInterval(fetchData, 10000); // Fetch data every 10 seconds
-
-      return () => clearInterval(intervalId); // Cleanup on component unmount
-    };
-
-    fetchDataAndSetInterval();
-  }, []); // Empty dependency array to run only once on mount
+  }
 
   return (
-    <div className="text-center pt-16 px-16">
+    <div className="text-center pt-8 sm:pt-16 px-4 sm:px-16">
       <table className="mx-auto w-full">
-        <thead className="text-3xl">
+        <thead className="text-2xl sm:text-3xl">
           <tr>
             <th></th>
             <th>Čas</th>
@@ -40,7 +25,7 @@ const Schedule = ({ schedule }) => {
             <th>Oficiální</th>
           </tr>
         </thead>
-        <tbody className="text-2xl">
+        <tbody className="text-xl sm:text-2xl">
           {schedule.map((event, index) => (
             <React.Fragment key={event.starttime}>
               <tr>
@@ -48,7 +33,7 @@ const Schedule = ({ schedule }) => {
                   <HamburgerMenu
                     isOpen={expandedIndex === index}
                     onClick={() => toggleMenu(index)}
-                    size={20}
+                    size={16}
                   />
                 </td>
                 <td>{event.starttime}</td>

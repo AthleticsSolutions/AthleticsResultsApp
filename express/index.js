@@ -18,6 +18,17 @@ function convertToTimeOnly(timestamp) {
   return `${hours}:${minutes}:${seconds}`;
 }
 
+app.use("/setBaseUrl", cors(), (req, res) => {
+  const newBaseUrl = req.body.url;
+  if (newBaseUrl) {
+    baseUrl = newBaseUrl;
+    res.json({ message: "Base URL set successfully", baseUrl });
+  } else {
+    res.status(400).json({ error: "Invalid request. 'url' parameter missing in the request body." });
+  }
+});
+
+
 app.use("/races", cors(), async (req, res) => {
   try {
     const response = await axios.get(UrlRaces);
@@ -61,7 +72,9 @@ app.use("/results/:id", cors(), async (req, res) => {
       isActive: data.isActive,
       result: data.bestResult,
       place : data.order,
-      sb : data.seasonalBest
+      pb : data.personalBest,
+      sb : data.seasonalBest,
+      type : data.resultType
     }));
 
     res.json({ results });

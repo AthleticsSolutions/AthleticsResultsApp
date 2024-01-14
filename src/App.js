@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-        <Topbar> </Topbar>
+        <Topbar />
 
       <Schedule schedule={schedule} />
     </div>

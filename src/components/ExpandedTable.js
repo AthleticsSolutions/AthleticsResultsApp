@@ -7,9 +7,7 @@ const ExpandedTable = ({ results, eventId }) => {
   const fetchData = async () => {
     try {
       const response = await axios.get(`http://localhost:4000/results/${eventId}`);
-      const sortedResults = response.data.results
-        ? response.data.results.sort((a, b) => a.place - b.place)
-        : [];
+      const sortedResults = response.data.results ? response.data.results.sort((a, b) => a.place - b.place) : [];
       setExpandedResults(sortedResults);
     } catch (error) {
       console.error("Error fetching data from API", error);
@@ -22,10 +20,10 @@ const ExpandedTable = ({ results, eventId }) => {
 
     return () => clearInterval(intervalId);
   }, [eventId]);
-
+  
   return (
-    <table className="mx-auto w-full expanded-table mt-8 mb-8">
-      <thead className="text-3xl">
+    <table className="mx-auto w-full expanded-table mt-2 sm:mt-8 mb-2 sm:mb-8">
+      <thead className="text-sm sm:text-3xl">
         <tr>
           <th>Místo</th>
           <th>Dráha</th>
@@ -36,18 +34,23 @@ const ExpandedTable = ({ results, eventId }) => {
           <th></th>
         </tr>
       </thead>
-      <tbody className="text-2xl">
-        {expandedResults.map((result) => (
-          <tr key={result.place}>
-            <td>{result.place ?? "✗"}.</td>
-            <td>{result.track}</td>
-            <td>{result.firstName}</td>
-            <td>{result.lastName}</td>
-            <td>{result.club}</td>
-            <td>{result.result}</td>
-            <td>{result.result < result.sb ? "SB" : result.result < result.pb && result.pb != null ? "PB" : ""}</td>
-          </tr>
-        ))}
+      <tbody className="text-xs sm:text-2xl">
+        {expandedResults
+          .sort((a, b) => {
+            const specialTypes = [1, 2, 3, 4];
+            return specialTypes.includes(a.type) ? 1 : specialTypes.includes(b.type) ? -1 : (a.place || 0) - (b.place || 0);
+          })
+          .map((result, index) => (
+            <tr key={index + 1}>
+              <td>{result.type !== 4 && result.place !== null ? index + 1 + "." : ""}</td>
+              <td>{result.track}</td>
+              <td>{result.firstName}</td>
+              <td>{result.lastName}</td>
+              <td>{result.club}</td>
+              <td>{result.result}</td>
+              <td>{result.type === 1 ? "DNS" : result.type === 2 ? "DNF" : result.type === 3 ? "DQ" : result.type === 4 ? "NM" : result.pb != null && result.result < result.pb ? "PB" : result.result < result.sb ? "SB" : ""}</td>
+            </tr>
+          ))}
       </tbody>
     </table>
   );
