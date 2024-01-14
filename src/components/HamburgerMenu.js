@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 const HamburgerMenu = ({ isOpen, onClick, size }) => {

@@ -8,7 +8,14 @@ function Topbar(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/races");
+        const apiUrl = process.env.REACT_APP_LOCAL_URL;
+        const response = await axios.get(`${apiUrl}/races`);
+        console.log(`${apiUrl}/races`);
+
+        if (response.status !== 200) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const races = response.data.races;
         setRaceData(races);
       } catch (error) {

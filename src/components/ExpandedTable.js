@@ -4,17 +4,18 @@ import axios from "axios";
 const ExpandedTable = ({ results, eventId }) => {
   const [expandedResults, setExpandedResults] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`http://localhost:4000/results/${eventId}`);
-      const sortedResults = response.data.results ? response.data.results.sort((a, b) => a.place - b.place) : [];
-      setExpandedResults(sortedResults);
-    } catch (error) {
-      console.error("Error fetching data from API", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const apiUrl = process.env.REACT_APP_LOCAL_URL;
+        const response = await axios.get(`${apiUrl}/results/${eventId}`);
+        const sortedResults = response.data.results ? response.data.results.sort((a, b) => a.place - b.place) : [];
+        setExpandedResults(sortedResults);
+      } catch (error) {
+        console.error("Error fetching data from API", error);
+      }
+    };
+
     fetchData();
     const intervalId = setInterval(fetchData, 10000);
 

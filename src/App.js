@@ -11,7 +11,8 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/time_schedule');
+        const apiUrl = process.env.REACT_APP_LOCAL_URL;
+        const response = await axios.get(`${apiUrl}/time_schedule`);
         setSchedule(response.data.schedule);
       } catch (error) {
         console.error('Error fetching data from API', error);

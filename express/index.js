@@ -1,8 +1,9 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+require('dotenv').config();
 
-const baseUrl = "http://192.168.0.115:9090";
+let baseUrl = process.env.AK_URL;
 const UrlRaces = `${baseUrl}/api/races`;
 const UrlDisciplines = `${baseUrl}/api/disciplines`;
 
@@ -72,7 +73,7 @@ app.use("/results/:id", cors(), async (req, res) => {
       isActive: data.isActive,
       result: data.bestResult,
       place : data.order,
-      pb : data.personalBest,
+      pb : data.personal,
       sb : data.seasonalBest,
       type : data.resultType
     }));
@@ -113,6 +114,6 @@ app.use("/time_schedule", cors(), async (req, res) => {
   }
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running at http://localhost:${port} `);
 });
