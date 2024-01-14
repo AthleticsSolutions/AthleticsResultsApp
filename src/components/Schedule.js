@@ -1,17 +1,17 @@
 // Schedule.js
 import React, { useState } from "react";
-import HamburgerMenu from './HamburgerMenu';
-import ExpandedTable from './ExpandedTable';
+import HamburgerMenu from "./HamburgerMenu";
+import ExpandedTable from "./ExpandedTable";
 
 const Schedule = ({ schedule }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const toggleMenu = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
-  }
+  };
 
   return (
-    <div className="text-center pt-8 sm:pt-16 px-4 sm:px-16">
+    <div className="text-center pt-8 sm:pt-16 px-4 sm:px-16 overflow-x-auto">
       <table className="mx-auto w-full">
         <thead className="text-2xl sm:text-3xl">
           <tr>

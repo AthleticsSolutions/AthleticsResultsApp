@@ -19,7 +19,7 @@ function Topbar(props) {
         const races = response.data.races;
         setRaceData(races);
       } catch (error) {
-        console.error('Error fetching race data from API', error);
+        console.error("Error fetching race data from API", error);
         setError(error);
       }
     };
@@ -37,7 +37,7 @@ function Topbar(props) {
 
   return (
     <div>
-      <form className="bg-slate-800 flex items-stretch justify-between gap-5 pt-1.5 pb-5 px-16 max-md:flex-wrap max-md:px-5">
+      <form className="bg-slate-800 flex flex-col sm:flex-row items-stretch justify-between gap-5 pt-1.5 pb-5 px-4 sm:px-16 max-md:flex-wrap max-md:px-5">
         <header className="flex items-start justify-between gap-5 max-md:max-w-full max-md:flex-wrap">
           <img
             loading="eager"
@@ -46,14 +46,18 @@ function Topbar(props) {
             alt="Logo"
           />
           <span className="flex grow basis-[0%] flex-col items-stretch">
-            <h1 className="pt-1 mt-1 text-5xl font-bold text-white">{raceData.length > 0 ? raceData[0].title : 'Error'}</h1>
+            <h1 className="pt-1 mt-1 text-5xl font-bold text-white">
+              {raceData.length > 0 ? raceData[0].title : "Error"}
+            </h1>
             <div className="flex flex-col justify-between gap-5 mt-0 sm:flex-row">
               <div className="flex-wrap text-2xl text-neutral-400">
                 <span>{dayNumber}.</span>
                 <span className="mx-1">{monthNumber}.</span>
                 <span className="mx-1">{yearNumber}</span>
               </div>
-              <h1 className="flex-wrap text-2xl text-neutral-400 sm:w-auto sm:flex-shrink-0">{raceData.length > 0 ? raceData[0].city : 'ERROR'}</h1>
+              <h1 className="flex-wrap text-2xl text-neutral-400 sm:w-auto sm:flex-shrink-0">
+                {raceData.length > 0 ? raceData[0].city : "ERROR"}
+              </h1>
             </div>
           </span>
         </header>
