@@ -49,7 +49,7 @@ const ExpandedTable = ({ results, eventId }) => {
               <td>{result.lastName}</td>
               <td>{result.club}</td>
               <td>{result.result}</td>
-              <td>{result.type === 1 ? "DNS" : result.type === 2 ? "DNF" : result.type === 3 ? "DQ" : result.type === 4 ? "NM" : result.pb != null && result.result < result.pb ? "PB" : result.result < result.sb ? "SB" : ""}</td>
+              <td>{result.result === null ? "" : result.type === 1 ? "DNS" : result.type === 2 ? "DNF" : result.type === 3 ? "DQ" : result.type === 4 ? "NM" : result.pb !== null && result.result < result.pb ? "PB" : result.result < result.sb ? "SB" : ""}</td>
             </tr>
           ))}
       </tbody>
