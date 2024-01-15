@@ -40,8 +40,8 @@ const Schedule = ({ schedule }) => {
                 <td>{event.discipline}</td>
                 <td>{event.category}</td>
                 <td>{event.phase}</td>
-                <td>{event.wind}</td>
-                <td>{event.cameraid}</td>
+                <td>{event.wind ? event.wind : "✗"}</td>
+                <td>{event.cameraid ? event.cameraid : "✗"}</td>
                 <td style={{ color: event.resultsOfficial ? "green" : "red" }}>
                   {event.resultsOfficial ? "✓" : "✗"}
                 </td>
