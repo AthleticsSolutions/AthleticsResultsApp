@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# React App for Athletic Office 2 (AK2) Results
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React application is built to display results from Athletic Office 2 (AK2) using Express.js as the backend.
 
-## Available Scripts
+## Configuration:
 
-In the project directory, you can run:
+Before running the application, make sure to set up the following configurations:
 
-### `npm start`
+### Environment Variables:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ensure you edit `.env` file in the root directory of the project with the following variables:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```js
+REACT_APP_LOCAL_URL="<URL OF EXPRESS SERVER E.G. : HTTP://192.168.0.2:4000>"
+AK_URL="<URL OF ATHLETIC OFFICE E.G. : HTTP://192.168.0.2:3000>" 
+```
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Running the Application:
 
-### `npm run build`
+1. **Express.js Backend**:
+    - Ensure you have Node.js and Express.js installed.
+    - Navigate to the `express` directory.
+    - Install dependencies: `npm install`.
+    - Start the Express.js server: `node index.js`.
+    - The server will run on port 4000 by default.
+    - Url is exposed to local network by default
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **React Frontend**:
+    - Navigate to the root directory of the project.
+    - Install dependencies: `npm install`.
+    - Start the React development server: `npm start`.
+    - Access the application in your browser at the specified URL.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once the application is running, users can access the Athletic Office 2 (AK2) results using their API through the provided interface.
 
-### `npm run eject`
+## Technologies Used:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React.js
+- Express.js
+- HTML
+- CSS
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributors:
+- Jakub Holub
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
