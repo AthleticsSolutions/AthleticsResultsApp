@@ -40,8 +40,9 @@ Once the application is running, users can access the Athletic Office 2 (AK2) re
 
 - React.js
 - Express.js
+- Tailwind CSS
 - HTML
-- CSS
+
 
 ## Contributors:
 - Jakub Holub
