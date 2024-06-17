@@ -1,3 +1,4 @@
+![athletics-results-app-mockup](mockup.png)
 # React App for Athletic Office 2 (AK2) Results
 
 This React application is built to display results from Athletic Office 2 (AK2) using Express.js as the backend.
